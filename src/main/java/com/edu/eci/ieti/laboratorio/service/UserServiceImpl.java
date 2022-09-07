@@ -47,13 +47,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User user, String id) throws UserException {
-        if(!users.containsKey(id)){
-            throw new UserException("No existe ese usuario");
-        }
-        users.remove(id);
-        users.put(id,user);
-        return user;
+    public User update(UserDto userDto, String id) throws UserException {
+        return null;
+    }
+
+    @Override
+    public List<User> findByNameOrLastname(String query) {
+        return null;
+    }
+
+    @Override
+    public List<User> findByDate(String date) {
+        return null;
     }
 
     @Override

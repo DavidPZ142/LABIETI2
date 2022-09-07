@@ -3,7 +3,7 @@ package com.edu.eci.ieti.laboratorio;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class LaboratorioApplication {
 
 	public static void main(String[] args) {

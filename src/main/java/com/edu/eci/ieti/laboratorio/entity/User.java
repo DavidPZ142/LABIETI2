@@ -5,7 +5,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -18,9 +21,10 @@ public class User {
     @Indexed (unique = true)
     private String email;
     private String lastname;
-    private String createdAt;
+    private LocalDate createdAt;
 
     public User(){
-        this.createdAt = LocalDate.now().toString();
+        this.id = UUID.randomUUID().toString();
+        this.createdAt = LocalDate.now();
     }
 }

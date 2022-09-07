@@ -6,6 +6,8 @@ import com.edu.eci.ieti.laboratorio.exception.UserException;
 import com.edu.eci.ieti.laboratorio.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -39,8 +41,23 @@ public class UserServiceMongoDB   implements UserService{
     }
 
     @Override
-    public User update(User user, String userId) throws UserException {
-        return null;
+    public User update(UserDto userDto, String userId) throws UserException {
+        User user = findById(userId);
+        user.setName(userDto.getName());
+        user.setLastname(userDto.getLastname());
+        userRepository.save(user);
+        return user ;
+    }
+
+    @Override
+    public List<User> findByNameOrLastname(String query) {
+        return userRepository.findByNameLikeOrLastnameLike(query,query);
+    }
+
+    @Override
+    public List<User> findByDate(String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        return userRepository.findByCreatedAtAfter(localDate);
     }
 
     @Override

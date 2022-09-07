@@ -16,8 +16,13 @@ public interface UserService {
 
     void deleteById( String id ) throws UserException;
 
-    User update( User user, String userId ) throws UserException;
+    User update( UserDto userDto, String userId ) throws UserException;
+
+    List<User> findByNameOrLastname(String query);
+
+    List<User> findByDate(String date);
 
     List<UserDto> convert(List<User> users);
+
 
 }
